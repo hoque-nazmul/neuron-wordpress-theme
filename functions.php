@@ -110,3 +110,17 @@ function neuron_theme_custom_post() {
     );
 }
 
+// Register Widget Area
+function neuron_widgets_init() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer', 'neuron' ),
+		'id'            => 'footer-1',
+		'description'   => esc_html__( 'Footer One widgets here.', 'neuron' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'neuron_widgets_init' );
+
