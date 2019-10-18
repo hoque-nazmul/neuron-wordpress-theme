@@ -82,7 +82,8 @@ function neuron_theme_custom_post() {
                 'singular_name' => __( 'Slide' )
             ),
             'supports' => array('title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes'),
-            'public' => true
+            'public' => false,
+            'show_ui' => true
         )
     );
     register_post_type( 'Feature',
@@ -92,7 +93,8 @@ function neuron_theme_custom_post() {
                 'singular_name' => __( 'Feature' )
             ),
             'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
-            'public' => true
+            'public' => false,
+            'show_ui' => true
         )
     );
     register_post_type( 'Service',
@@ -102,7 +104,8 @@ function neuron_theme_custom_post() {
                 'singular_name' => __( 'Service' )
             ),
             'supports' => array('title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes'),
-            'public' => true
+            'public' => false,
+            'show_ui' => true
         )
     );
 }
