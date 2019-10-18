@@ -85,5 +85,25 @@ function neuron_theme_custom_post() {
             'public' => true
         )
     );
+    register_post_type( 'Feature',
+        array(
+            'labels' => array(
+                'name' => __( 'Features' ),
+                'singular_name' => __( 'Feature' )
+            ),
+            'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
+            'public' => true
+        )
+    );
+    register_post_type( 'Service',
+        array(
+            'labels' => array(
+                'name' => __( 'Services' ),
+                'singular_name' => __( 'Service' )
+            ),
+            'supports' => array('title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes'),
+            'public' => true
+        )
+    );
 }
 
