@@ -176,13 +176,13 @@
 				$args = array('posts_per_page' => 5, 'post_type' => 'Feature', 'orderby' => 'menu_order', 'order' => 'ASC');
 				$myposts = get_posts($args);
 				foreach ($myposts as $post) : setup_postdata($post); ?>
-					
+
 					<div class="col-md-4">
 						<div class="single-intro">
 							<div class="intro-img" style="background-image:url(<?php the_post_thumbnail_url('large'); ?>)"></div>
 							<div class="intro-details text-center">
 								<h3><?php the_title(); ?></h3>
-								<p><?php the_content() ?></p>
+								<p style="color: #fff"><?php the_content(); ?></p>
 							</div>
 						</div>
 					</div>
@@ -231,56 +231,29 @@
 
 			<div class="row">
 				<!-- single service -->
-				<div class="col-sm-6 col-md-4">
-					<div class="services-tiem">
-						<img class="hvr-buzz-out" src="<?php echo get_template_directory_uri(); ?>/assets/img/services/1.png" alt="" />
-						<h3><a href="#">Performance</a></h3>
-						<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
+				<?php
+				global $post;
+				$args = array('posts_per_page' => 6, 'post_type' => 'Service', 'orderby' => 'menu_order', 'order' => 'ASC');
+				$myposts = get_posts($args);
+				foreach ($myposts as $post) : setup_postdata($post); ?>
+				<?php
+				$link = get_post_meta($post->ID, 'link', true);
+				?>
+
+					<div class="col-sm-6 col-md-4">
+						<div class="services-tiem">
+							<?php the_post_thumbnail('thumbnail', array('class' => 'hvr-buzz-out'))?>
+							<h3><a href="<?php echo $link; ?>"><?php the_title(); ?></a></h3>
+							<p style="color: #fff"><?php the_content(); ?></p>
+						</div>
 					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-sm-6 col-md-4">
-					<div class="services-tiem">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/2.png" alt="" />
-						<h3><a href="#">Sustainability</a></h3>
-						<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-sm-6 col-md-4">
-					<div class="services-tiem">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/3.png" alt="" />
-						<h3><a href="#">Web Design</a></h3>
-						<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-sm-6 col-md-4">
-					<div class="services-tiem">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/4.png" alt="" />
-						<h3><a href="#">Web Development</a></h3>
-						<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-sm-6 col-md-4">
-					<div class="services-tiem">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/5.png" alt="" />
-						<h3><a href="#">Branding Design</a></h3>
-						<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-sm-6 col-md-4">
-					<div class="services-tiem">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services/6.png" alt="" />
-						<h3><a href="#">Marketing </a></h3>
-						<p>Dynamically fabricate innovative products and distributed web services. Distinctively pontificate.</p>
-					</div>
-				</div>
+
+				<?php endforeach;
+				wp_reset_query(); ?>
+
 			</div>
 		</div>
-	</section><!-- end services section -->
+	</section>
 
 
 	<!-- :::::::::::::::::::::  Client Section:::::::::::::::::::::::::: -->
