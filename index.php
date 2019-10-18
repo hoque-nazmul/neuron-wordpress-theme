@@ -128,27 +128,27 @@
 		$args = array('posts_per_page' => -5, 'post_type' => 'Slide', 'orderby' => 'menu_order', 'order' => 'ASC');
 		$myposts = get_posts($args);
 		foreach ($myposts as $post) : setup_postdata($post); ?>
-		<?php
-			$btn_link = get_post_meta($post->ID, 'btn_link', true);
-			$btn_text = get_post_meta($post->ID, 'btn_text', true);
-		?>
-		<div class="homepage-slider" style="background-image:url(<?php the_post_thumbnail_url(); ?>)">
-			<div class="display-table">
-				<div class="display-table-cell">
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-7">
-								<div class="slider-content">
-									<h1><?php the_title(); ?></h1>
-									<p><?php the_content(); ?></p>
-									<a href="<?php echo $btn_link; ?>"><?php echo $btn_text; ?> <i class="fa fa-long-arrow-right"></i></a>
+			<?php
+				$btn_link = get_post_meta($post->ID, 'btn_link', true);
+				$btn_text = get_post_meta($post->ID, 'btn_text', true);
+				?>
+			<div class="homepage-slider" style="background-image:url(<?php the_post_thumbnail_url('large'); ?>)">
+				<div class="display-table">
+					<div class="display-table-cell">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-7">
+									<div class="slider-content">
+										<h1><?php the_title(); ?></h1>
+										<p><?php the_content(); ?></p>
+										<a href="<?php echo $btn_link; ?>"><?php echo $btn_text; ?> <i class="fa fa-long-arrow-right"></i></a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
 		<?php endforeach;
 		wp_reset_query(); ?>
@@ -171,35 +171,25 @@
 			</div>
 			<div class="row">
 				<!-- single intro -->
-				<div class="col-md-4">
-					<div class="single-intro">
-						<div class="intro-img intro-bg1"></div>
-						<div class="intro-details text-center">
-							<h3>About Business</h3>
-							<p>Seamlessly envisioneer extensive interfaces and back wardcompatible applications. Proactively promote timely best.</p>
+				<?php
+				global $post;
+				$args = array('posts_per_page' => 5, 'post_type' => 'Feature', 'orderby' => 'menu_order', 'order' => 'ASC');
+				$myposts = get_posts($args);
+				foreach ($myposts as $post) : setup_postdata($post); ?>
+					
+					<div class="col-md-4">
+						<div class="single-intro">
+							<div class="intro-img" style="background-image:url(<?php the_post_thumbnail_url('large'); ?>)"></div>
+							<div class="intro-details text-center">
+								<h3><?php the_title(); ?></h3>
+								<p><?php the_content() ?></p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<!-- single intro -->
-				<div class="col-md-4">
-					<div class="single-intro">
-						<div class="intro-img intro-bg2"></div>
-						<div class="intro-details text-center">
-							<h3>Business Growth</h3>
-							<p>Seamlessly envisioneer extensive interfaces and back wardcompatible applications. Proactively promote timely best.</p>
-						</div>
-					</div>
-				</div>
-				<!-- single intro -->
-				<div class="col-md-4">
-					<div class="single-intro">
-						<div class="intro-img intro-bg3"></div>
-						<div class="intro-details text-center">
-							<h3>Sustainability</h3>
-							<p>Seamlessly envisioneer extensive interfaces and back wardcompatible applications. Proactively promote timely best.</p>
-						</div>
-					</div>
-				</div>
+
+				<?php endforeach;
+				wp_reset_query(); ?>
+
 			</div>
 		</div>
 	</section><!-- intro area end -->
