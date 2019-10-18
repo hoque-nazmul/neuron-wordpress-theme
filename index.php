@@ -8,7 +8,6 @@
         <meta name="keywords" content="advisor, corporate accountant, finance, financial, insurance, investment, consultation">
         <meta name="author" content="trendytheme.net">
 
-		<title>Neuron Finance</title>
 		<?php echo wp_head(); ?>
 	</head>
 
@@ -104,6 +103,13 @@
 
 	                <!-- Collect the nav links, forms, and other content for toggling -->
 	                <div class="collapse navbar-collapse" id="navbar-menu">
+						<?php 
+							// $args = array(
+							// 	'menu_class'      => 'menu',
+							// 	'theme_location'  => 'menu-1',
+							// );
+							// wp_nav_menu($args)
+						?>
 	                    <ul class="nav navbar-nav navbar-right" data-in="" data-out="">
 	                        <li class="active"><a href="index.html">Home</a></li>
 	                        <li><a href="about.html">About Us</a></li>
