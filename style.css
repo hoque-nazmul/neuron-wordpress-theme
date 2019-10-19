@@ -1556,3 +1556,7 @@ li.rating ul i {
 .copyright-wrapper a{
 	color: #fff;
 }
+.alignright {
+    float: right;
+    margin-left: 1em;
+}
