@@ -36,7 +36,7 @@ get_header(); ?>
                 <div class="col-md-6">
                     <!-- block image -->
                     <div class="block-img">
-                        <img src="assets/img/about-us-block.jpg" alt="">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/img/about-us-block.jpg" alt="">
                     </div>
                 </div>
             </div>
