@@ -153,7 +153,6 @@ function neuron_widgets_init() {
 }
 add_action( 'widgets_init', 'neuron_widgets_init' );
 
-
 function post_list_shortcode($atts){
     extract( shortcode_atts( array(
         'count' => 3,
