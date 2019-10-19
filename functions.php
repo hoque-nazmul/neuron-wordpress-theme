@@ -110,10 +110,12 @@ function neuron_theme_custom_post() {
     );
 }
 
+add_filter( 'widget_text', 'do_shortcode' );
+
 // Register Widget Area
 function neuron_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer', 'neuron' ),
+		'name'          => esc_html__( 'Footer One', 'neuron' ),
 		'id'            => 'footer-1',
 		'description'   => esc_html__( 'Footer One widgets here.', 'neuron' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -121,6 +123,61 @@ function neuron_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Two', 'neuron' ),
+		'id'            => 'footer-2',
+		'description'   => esc_html__( 'Footer tow widgets here.', 'neuron' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Three', 'neuron' ),
+		'id'            => 'footer-3',
+		'description'   => esc_html__( 'Footer three widgets here.', 'neuron' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Four', 'neuron' ),
+		'id'            => 'footer-4',
+		'description'   => esc_html__( 'Footer Four widgets here.', 'neuron' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
 }
 add_action( 'widgets_init', 'neuron_widgets_init' );
+
+
+function post_list_shortcode($atts){
+    extract( shortcode_atts( array(
+        'count' => 3,
+    ), $atts) );
+     
+    $q = new WP_Query(
+        array('posts_per_page' => $count, 'post_type' => 'post')
+        );      
+         
+    $list = '<ul>';
+    while($q->have_posts()) : $q->the_post();
+        $idd = get_the_ID();
+        $list .= '
+        <li>
+            '.get_the_post_thumbnail($idd, 'thumbnail').'
+            <p><a href="'.get_the_permalink().'">'.get_the_title().'</a></p>
+            <span>'.get_the_date('d F Y', $idd).'</span>
+        </li>
+        ';        
+    endwhile;
+    $list.= '</ul>';
+    wp_reset_query();
+    return $list;
+}
+add_shortcode('thumb_post', 'post_list_shortcode');     
+    
 
