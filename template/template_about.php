@@ -24,20 +24,8 @@ get_header(); ?>
     <section class="block about-us-block section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <!-- block text -->
-                    <div class="block-text">
-                        <h2>A Finance Agency Crafting Beautiful &amp; Engaging Online Experiences</h2>
-                        <p>Seamlessly communicate distinctive alignments and business models. Efficiently whiteboard robust meta-services whereas stand-alone synergy. Enthusiastically engage premier supply chains after intuitive testing procedures. Conveniently parallel task robust imperatives through corporate customer service.</p>
-
-                        <p>Dynamically productivate tactical mindshare via business collaboration and idea-sharing. Credibly conceptualize extensive schemas for functionalized metrics. </p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <!-- block image -->
-                    <div class="block-img">
-                        <img src="<?php echo get_template_directory_uri();?>/assets/img/about-us-block.jpg" alt="">
-                    </div>
+                <div class="col-md-12">
+                    <?php the_content(); ?>
                 </div>
             </div>
         </div>
