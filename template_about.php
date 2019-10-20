@@ -32,7 +32,7 @@ get_header(); ?>
     </section>
 
     <!-- Promotional Part -->
-    <?php get_template_part('../content/promo'); ?>
+    <?php get_template_part('content/promo'); ?>
 
     <!-- Accordian Section -->
     <section class="accordian-section section-padding">
