@@ -72,7 +72,6 @@ function neuron_theme_supports()
 }
 add_action('after_setup_theme', 'neuron_theme_supports');
 
-
 add_action( 'init', 'neuron_theme_custom_post' );
 function neuron_theme_custom_post() {
     register_post_type( 'Slide',
@@ -106,6 +105,16 @@ function neuron_theme_custom_post() {
             'supports' => array('title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes'),
             'public' => false,
             'show_ui' => true
+        )
+    );
+    register_post_type( 'portfolio',
+        array(
+            'labels' => array(
+                'name' => __( 'Portfolios' ),
+                'singular_name' => __( 'Portfolio' )
+            ),
+            'supports' => array('title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes'),
+            'public' => true
         )
     );
 }
