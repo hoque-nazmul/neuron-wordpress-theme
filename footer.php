@@ -1,5 +1,9 @@
 
 	<!-- :::::::::::::::::::::  Client Section:::::::::::::::::::::::::: -->
+	<?php if(is_page(11)){
+
+	}else{ ?>
+	
 	<section class="client-logo">
 		<div class="container">
 			<div class="row">
@@ -15,6 +19,8 @@
 			</div><!-- /.row -->
 		</div><!-- /.container -->
 	</section><!-- end client section -->
+
+	<?php } ?>
 
 
 	<!-- ::::::::::::::::::::: Footer Section:::::::::::::::::::::::::: -->
