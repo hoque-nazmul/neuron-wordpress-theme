@@ -21,6 +21,11 @@ function neuron_theme_files()
 }
 add_action('wp_enqueue_scripts', 'neuron_theme_files');
 
+
+
+require (get_template_directory().'/inc/metabox/init.php');
+require (get_template_directory().'/inc/metabox/example-functions.php');
+
 function neuron_theme_supports()
 {
     load_theme_textdomain('neuron', get_template_directory() . '/languages');
