@@ -22,9 +22,114 @@ function neuron_theme_files()
 add_action('wp_enqueue_scripts', 'neuron_theme_files');
 
 
-
+/*
+    Meta Box Support using CMB 2
+*/
 require (get_template_directory().'/inc/metabox/init.php');
-require (get_template_directory().'/inc/metabox/example-functions.php');
+
+add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
+/**
+ * Define the metabox and field configurations.
+ */
+function cmb2_sample_metaboxes() {
+
+	/**
+	 * Initiate the metabox
+	 */
+	$cmb = new_cmb2_box( array(
+		'id'            => 'test_metabox',
+		'title'         => __( 'My Metabox', 'cmb2' ),
+		'object_types'  => array( 'portfolio', ), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // Keep the metabox closed by default
+	) );
+
+	// Subtitle text field
+	$cmb->add_field( array(
+		'name'       => __( 'Sub Title', 'cmb2' ),
+		'id'         => 'sub_title',
+		'type'       => 'text',
+    ) );
+    
+	// Link text field
+	$cmb->add_field( array(
+		'name' => __( 'Link Text', 'cmb2' ),
+		'id'   => 'link_text',
+        'type' => 'text',
+        'default' => 'Visit Website',
+    ) );
+    
+    // Link Url
+    $cmb->add_field( array(
+		'name' => __( 'Link URL', 'cmb2' ),
+		'id'   => 'link_url',
+		'type' => 'text_url',
+	) );
+
+    // Add other metaboxes as needed
+
+}
+
+add_action( 'cmb2_admin_init', 'groupInput' );
+/**
+ * Hook in and add a metabox to demonstrate repeatable grouped fields
+ */
+function groupInput() {
+	$prefix = 'yourprefix_group_';
+
+	/**
+	 * Repeatable Field Groups
+	 */
+	$cmb_group = new_cmb2_box( array(
+		'id'           => $prefix . 'metabox',
+		'title'        => esc_html__( 'Repeating Field Group', 'cmb2' ),
+		'object_types' => array( 'portfolio' ),
+	) );
+
+	// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+	$group_field_id = $cmb_group->add_field( array(
+		'id'          => $prefix . 'demo',
+		'type'        => 'group',
+		'options'     => array(
+			'group_title'    => esc_html__( 'Information {#}', 'cmb2' ), // {#} gets replaced by row number
+			'add_button'     => esc_html__( 'Add Another Entry', 'cmb2' ),
+			'remove_button'  => esc_html__( 'Remove Entry', 'cmb2' ),
+			'sortable'       => true,
+			// 'closed'      => true, // true to have the groups closed by default
+			// 'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' ), // Performs confirmation before removing group.
+		),
+	) );
+
+	/**
+	 * Group fields works the same, except ids only need
+	 * to be unique to the group. Prefix is not needed.
+	 *
+	 * The parent field's id needs to be passed as the first argument.
+	 */
+	$cmb_group->add_group_field( $group_field_id, array(
+		'name'       => esc_html__( 'Information Title', 'cmb2' ),
+		'id'         => 'title',
+		'type'       => 'text',
+		// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+	) );
+
+	$cmb_group->add_group_field( $group_field_id, array(
+		'name'        => esc_html__( 'Information Valu', 'cmb2' ),
+		'id'          => 'value',
+		'type'        => 'text',
+	) );
+
+}
+
+/* ====================== END CMB2 Meta Box Configuaration ========================= */
+
+
+
+
+
 
 function neuron_theme_supports()
 {
@@ -118,7 +223,7 @@ function neuron_theme_custom_post() {
                 'name' => __( 'Portfolios' ),
                 'singular_name' => __( 'Portfolio' )
             ),
-            'supports' => array('title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes'),
+            'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
             'public' => true
         )
     );
