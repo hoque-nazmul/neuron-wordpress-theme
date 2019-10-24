@@ -23,28 +23,44 @@
                 <div class="col-md-8">
                     <!-- single portfolio images -->
                     <div class="single-portfolio-images">
-                        <img class="img-responsive" src="assets/img/portfolio-details.jpg" alt="">
+                        <?php 
+                        $img = get_post_meta(get_the_ID(), 'preview_image', true);
+                        ?>
+                        <?php if(!empty($img)): ?>
+                            <img class="img-responsive" src="<?php echo $img; ?>" alt="">
+                        <?php else: 
+                            the_post_thumbnail('large');
+                        endif;
+                            ?>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <!-- single portfolio info -->
                     <div class="single-portfolio-inner">
                         <header class="single-portfolio-title">
-                            <a>ISO Design</a>
-                            <h2>IOS Game Design prototype</h2>
-                        </header>
-                        <div class="portfolio-details-panel">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                            <?php 
+                                $sub_title = get_post_meta(get_the_ID(), 'sub_title', true);
+                                $link = get_post_meta(get_the_ID(), 'single_link_text', true);
+                                $url = get_post_meta(get_the_ID(), 'single_link_url', true);
+                                $gorups = get_post_meta(get_the_ID(), 'group_demo', true);
 
+                            ?>
+                            <a><?php if(!empty($sub_title)){
+                                echo $sub_title;
+                            } ?></a>
+                            <?php the_content(); ?>
+                            
+            
                             <ul class="portfolio-meta">
-                                <li><span> Client </span> Themeforest</li>
-                                <li><span> Created by </span> John Doe</li>
-                                <li><span> Completed on </span> 17 Oct 2016</li>
-                                <li><span> Skills </span> HTML5 / PHP / CSS3</li>
-                                <li><span> Share </span> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> <a href="#"><i class="fa fa-pinterest"></i></a></li>
+
+                                <?php if(!empty($gorups)): foreach($gorups as $gorup):?>
+                                    <li><span> <?php echo $gorup['title']; ?> </span> <?php echo $gorup['value']; ?></li>
+                                <?php endforeach;endif;?>
                             </ul>
                         </div>
-                        <a class="btn btn-primary" href="#."> Visit website </a>
+                        <?php if(!empty($link)): ?>
+                            <a class="btn btn-primary" href="<?php echo $url; ?>"> <?php echo $link; ?> </a>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>
