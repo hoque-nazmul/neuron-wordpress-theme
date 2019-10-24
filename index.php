@@ -20,7 +20,7 @@
 								<div class="col-sm-7">
 									<div class="slider-content">
 										<h1><?php the_title(); ?></h1>
-										<p><?php the_content(); ?></p>
+										<?php the_content(); ?>
 										<a href="<?php echo $btn_link; ?>"><?php echo $btn_text; ?> <i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
