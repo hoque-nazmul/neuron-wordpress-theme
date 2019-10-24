@@ -1133,6 +1133,7 @@ a:focus{
 	transition: all .3s;
 	width: 100%;
 	height: auto;
+	max-height: 260px;
 }
 .blog-content{
 	padding: 0px 10px 20px 30px;
