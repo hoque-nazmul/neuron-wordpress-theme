@@ -160,6 +160,9 @@ function neuron_theme_supports()
     */
     add_theme_support('post-thumbnails');
 
+    // Add Custom Image sizing support
+    add_image_size( 'neuron-blog-image', 740, 260, true );
+
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus( array(
         'menu-1' => esc_html__( 'Primary', 'neuron' ),
