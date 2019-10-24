@@ -25,7 +25,7 @@
                     <div class="services-tiem">
                         <?php the_post_thumbnail('thumbnail', array('class' => 'hvr-buzz-out')) ?>
                         <h3><a href="<?php echo $link; ?>"><?php the_title(); ?></a></h3>
-                        <p style="color: #fff"><?php the_content(); ?></p>
+                        <?php the_content(); ?>
                     </div>
                 </div>
 
