@@ -117,7 +117,7 @@ function groupInput() {
 	) );
 
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name'        => esc_html__( 'Information Valu', 'cmb2' ),
+		'name'        => esc_html__( 'Information Value', 'cmb2' ),
 		'id'          => 'value',
 		'type'        => 'text',
 	) );
