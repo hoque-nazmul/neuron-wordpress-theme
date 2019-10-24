@@ -37,7 +37,7 @@ function cmb2_sample_metaboxes() {
 	 * Initiate the metabox
 	 */
 	$cmb = new_cmb2_box( array(
-		'id'            => 'test_metabox',
+		'id'            => 'single_meta',
 		'title'         => __( 'My Metabox', 'cmb2' ),
 		'object_types'  => array( 'portfolio', ), // Post type
 		'context'       => 'normal',
@@ -49,6 +49,13 @@ function cmb2_sample_metaboxes() {
 
 	// Subtitle text field
 	$cmb->add_field( array(
+		'name'       => __( 'Preview Image', 'cmb2' ),
+		'id'         => 'preview_image',
+		'type'       => 'file',
+    ) );
+
+	// Subtitle text field
+	$cmb->add_field( array(
 		'name'       => __( 'Sub Title', 'cmb2' ),
 		'id'         => 'sub_title',
 		'type'       => 'text',
@@ -57,7 +64,7 @@ function cmb2_sample_metaboxes() {
 	// Link text field
 	$cmb->add_field( array(
 		'name' => __( 'Link Text', 'cmb2' ),
-		'id'   => 'link_text',
+		'id'   => 'single_link_text',
         'type' => 'text',
         'default' => 'Visit Website',
     ) );
@@ -65,7 +72,7 @@ function cmb2_sample_metaboxes() {
     // Link Url
     $cmb->add_field( array(
 		'name' => __( 'Link URL', 'cmb2' ),
-		'id'   => 'link_url',
+		'id'   => 'single_link_url',
 		'type' => 'text_url',
 	) );
 
@@ -78,13 +85,13 @@ add_action( 'cmb2_admin_init', 'groupInput' );
  * Hook in and add a metabox to demonstrate repeatable grouped fields
  */
 function groupInput() {
-	$prefix = 'yourprefix_group_';
+	$prefix = 'group_';
 
 	/**
 	 * Repeatable Field Groups
 	 */
 	$cmb_group = new_cmb2_box( array(
-		'id'           => $prefix . 'metabox',
+		'id'           => $prefix . 'meta',
 		'title'        => esc_html__( 'Repeating Field Group', 'cmb2' ),
 		'object_types' => array( 'portfolio' ),
 	) );
@@ -120,7 +127,9 @@ function groupInput() {
 		'name'        => esc_html__( 'Information Value', 'cmb2' ),
 		'id'          => 'value',
 		'type'        => 'text',
-	) );
+    ) );
+    
+    
 
 }
 
