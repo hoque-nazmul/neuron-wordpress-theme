@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <!-- ::::::::::::::::::::: Page Title Section:::::::::::::::::::::::::: -->
-<section class="page-title">
+<section class="page-title" style="background image:url(<?php the_post_thumbnail_url('large') ?>)">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

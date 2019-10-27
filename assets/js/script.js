@@ -24,7 +24,7 @@
 	// ============================================
     jQuery(document).ready(function ($) {
         
-		
+		$("#email").attr("placeholder","500");
 		// owl carouse
 			$('.all-client-logo').owlCarousel({
 				items:5,

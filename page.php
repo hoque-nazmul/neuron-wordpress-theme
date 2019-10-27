@@ -2,7 +2,7 @@
 
 <!-- ::::::::::::::::::::: Page Title Section:::::::::::::::::::::::::: -->
 <?php while ( have_posts() ) : the_post();?>
-<section class="page-title" <?php if(has_post_thumbnail()): ?> style="background:url(<?php the_post_thumbnail_url('large')?>)" <?php endif; ?>>
+<section class="page-title" <?php if(has_post_thumbnail()): ?> style="background image:url(<?php the_post_thumbnail_url('large')?>)" <?php endif; ?>>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
