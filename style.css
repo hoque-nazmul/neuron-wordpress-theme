@@ -1561,3 +1561,9 @@ li.rating ul i {
     float: right;
     margin-left: 1em;
 }
+.single-thumb img{
+	width: 100%;
+	height: auto;
+	max-height: 500px;
+	max-width: 100%;
+}
