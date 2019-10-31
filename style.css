@@ -1567,3 +1567,45 @@ li.rating ul i {
 	max-height: 500px;
 	max-width: 100%;
 }
+
+
+
+form#commentform input[type=text], input[type=email], input[type=url] {
+	width: 32%;
+	float: left;
+	overflow: hidden;
+	margin-right:20px;
+    padding: 15px 10px;
+    border: 1px solid #eae6e6;
+}
+
+form#commentform input[type=url]{
+	margin-right: 0px;
+}
+
+form#commentform textarea{
+	width: 100%;
+	padding: 15px 10px;
+    border: 1px solid #eae6e6;
+}
+
+form#commentform{
+	overflow: hidden;
+}
+
+form#commentform input[type=submit] {
+    border: 0px;
+    padding: 12px 20px;
+    background: #3452FF;
+    color: #fff;
+	float: right;
+	margin-top: 20px;
+}
+
+p.comment-form-cookies-consent {
+    display: none;
+}
+
+p.comment-form-comment label, p.comment-form-author label, p.comment-form-email label, p.comment-form-url label {
+    display: none;
+}
